@@ -125,8 +125,8 @@ def create_vms(section, constants):
                persist=True)
 
 
-def run_scenario1():
-    section = 'scenario1'
+def run_intra_region():
+    section = 'intra_region'
     constants = fetch_constants(section=section)
 
     logger.info('Creating VPCs:')

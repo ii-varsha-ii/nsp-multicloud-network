@@ -1,4 +1,4 @@
-scenario1:
+intra_region:
   IP_CIDR1 : '172.32.1.0/24'
   IP_CIDR2 : '172.32.0.0/24'
   VPC1 : 'custom_vpc_1'

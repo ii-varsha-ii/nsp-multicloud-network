@@ -24,9 +24,8 @@ def _cleanup_security_groups(sg_id):
     delete_security_group(sg_id)
 
 
-def cleanup_scenario1():
-    filename = 'scenario1'
-    data: dict = load_config(filename=filename)
+def cleanup_intra_region(section: str):
+    data: dict = load_config(filename=section)
     final_data = data.copy()
 
     # Delete Transit Gateway Attachments
@@ -59,8 +58,8 @@ def cleanup_scenario1():
             _cleanup_vpc(y)
             del final_data[x]
 
-    update_config(filename=filename, data=final_data)
+    update_config(filename=section, data=final_data)
 
 
 if __name__ == '__main__':
-    cleanup_scenario1()
+    cleanup_intra_region(section='intra_region')
