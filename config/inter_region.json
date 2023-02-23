@@ -1,0 +1,21 @@
+{
+  "us_east_1_vpc": "vpc-0c1f34c503bac4d64",
+  "us_west_1_vpc": "vpc-053335bfacf04cf4e",
+  "us_east_1d_public_subnet_vpc1": "subnet-00c4742d14fa25980",
+  "us_east_1d_private_subnet_vpc1": "subnet-006f18566b1f794ab",
+  "us_west_1a_private_subnet_vpc2": "subnet-0514e44c1349db719",
+  "igw": "igw-08f6e83e19792afb7",
+  "us_east_1_public_rt_vpc1": "rtb-0170d1d8c0131c0dc",
+  "us_west_1_private_rt_vpc2": "rtb-0d39e1715acd73b4c",
+  "us_east_1_private_rt_vpc1": "rtb-053832b8476fa05c4",
+  "us_east_1_tgw_1": "tgw-0c23822ed0315bc62",
+  "us_east_1_tgw_1_route_table": "tgw-rtb-0d6906d8215f32f68",
+  "us_west_1_tgw_2": "tgw-0df96aeb263ed8add",
+  "us_west_1_tgw_2_route_table": "tgw-rtb-0b50249a03a03a519",
+  "tgw_peer_connection": "tgw-attach-05c5d982f075a353d",
+  "us_east_1_tgw_attach_vpc1": "tgw-attach-0e16ba81b3b72db2a",
+  "us_west_1_tgw_attach_vpc2": "tgw-attach-045499d1910b24096",
+  "us_east_1_sg_pub_vpc1": "sg-0f1e047702d0c6cd1",
+  "us_east_1_sg_pri_vpc1": "sg-0dc6ad7c66feff9e2",
+  "us_west_1_sg_pri_vpc2": "sg-02b74e017534aad43"
+}

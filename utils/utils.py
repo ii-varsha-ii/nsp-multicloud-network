@@ -3,11 +3,18 @@ import os
 
 import yaml
 
-CONFIG_PATH = os.path.join(os.getcwd(), 'config')
+from pathlib import Path
+
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent
+
+
+CONFIG_PATH = os.path.join(get_project_root(), 'config', '')
 
 
 def fetch_constants(section: str):
-    with open(CONFIG_PATH + "/constants.yaml", "r") as file:
+    with open(CONFIG_PATH + "constants.yaml", "r") as file:
         constants = yaml.safe_load(file)
     return constants[section]
 

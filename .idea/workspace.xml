@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7198432e-41f5-428c-9559-8a22ddecbd1d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/inter_region.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgs/nsp-scenario-2.drawio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run/inter-region.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/constants.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/scenario1.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/intra_region.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/scenario1.py" beforeDir="false" afterPath="$PROJECT_DIR$/run/intra-region.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/intra-region.py" beforeDir="false" afterPath="$PROJECT_DIR$/run/intra-region.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/cleanup.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/cleanup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/ec2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/transit_gateways.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/transit_gateways.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/vpc.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/vpc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
