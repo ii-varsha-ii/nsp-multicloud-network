@@ -1,2 +1,3 @@
 venv/
 config/access_keys.yml
+config/defaultvpc_instance1.pem

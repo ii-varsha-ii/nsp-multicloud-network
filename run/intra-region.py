@@ -31,6 +31,8 @@ def create_vpcs(section, constants):
     SUBNET1_VPC2 = constants['SUBNET1_VPC2']
 
     IGW = constants['IGW']
+    REGION = constants['REGION1']
+    REGION1_AZ = constants['REGION1_AZ']
 
     VPC1_PUB_ROUTE_TABLE = constants['VPC1_PUB_ROUTE_TABLE']
     VPC2_PRI_ROUTE_TABLE = constants['VPC2_PRI_ROUTE_TABLE']
@@ -39,18 +41,24 @@ def create_vpcs(section, constants):
     vpc_2 = create_vpc(resource=us_east_1_resource, name=VPC2, ip_cidr=IP_CIDR2, filename=section, persist=True)
 
     logger.info('Creating Subnets:')
-    subnet1_vpc_1 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET1_VPC1, subnet_ip_cidr=SUBNET_CIDR11, vpc_name=VPC1, filename=section, persist=True)
-    subnet2_vpc_1 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET2_VPC1, subnet_ip_cidr=SUBNET_CIDR12, vpc_name=VPC1, filename=section, persist=True)
-    subnet1_vpc_2 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET1_VPC2, subnet_ip_cidr=SUBNET_CIDR21, vpc_name=VPC2, filename=section, persist=True)
+    subnet1_vpc_1 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET1_VPC1, subnet_ip_cidr=SUBNET_CIDR11,
+                                  vpc_name=VPC1, az=REGION1_AZ, filename=section, persist=True)
+    subnet2_vpc_1 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET2_VPC1, subnet_ip_cidr=SUBNET_CIDR12,
+                                  vpc_name=VPC1, az=REGION1_AZ, filename=section, persist=True)
+    subnet1_vpc_2 = create_subnet(resource=us_east_1_resource, subnet_name=SUBNET1_VPC2, subnet_ip_cidr=SUBNET_CIDR21,
+                                  vpc_name=VPC2, az=REGION1_AZ, filename=section, persist=True)
 
     logger.info('Creating Internet Gateway')
     ig = create_internet_gateways(resource=us_east_1_resource, ig_name=IGW, filename=section, persist=True)
     attach_vpc_with_ig(resource=us_east_1_resource, vpc=VPC1, igw=IGW, filename=section)
 
-    find_existing_route_tables(resource=us_east_1_resource, route_table_name=VPC1_PUB_ROUTE_TABLE, vpc=VPC1, filename=section, persist=True)
-    find_existing_route_tables(resource=us_east_1_resource, route_table_name=VPC2_PRI_ROUTE_TABLE, vpc=VPC2, filename=section, persist=True)
+    find_existing_route_tables(resource=us_east_1_resource, route_table_name=VPC1_PUB_ROUTE_TABLE, vpc=VPC1,
+                               filename=section, persist=True)
+    find_existing_route_tables(resource=us_east_1_resource, route_table_name=VPC2_PRI_ROUTE_TABLE, vpc=VPC2,
+                               filename=section, persist=True)
 
-    create_route_with_igw(resource=us_east_1_resource, igw=IGW, route_table=VPC1_PUB_ROUTE_TABLE, destination_ip_cidr='0.0.0.0/0',
+    create_route_with_igw(resource=us_east_1_resource, igw=IGW, route_table=VPC1_PUB_ROUTE_TABLE,
+                          destination_ip_cidr='0.0.0.0/0',
                           filename=section)
 
     logger.info('Creating private routing table')
@@ -81,17 +89,20 @@ def create_tgw(section, constants):
     VPC2_PRI_ROUTE_TABLE = constants['VPC2_PRI_ROUTE_TABLE']
     VPC1_PRI_ROUTE_TABLE = constants['VPC1_PRI_ROUTE_TABLE']
 
-    create_transit_gateway(client=us_east_1_client, tgw_name=TGW, tgw_route_table=TGW_1_ROUTE_TABLE, filename=section, persist=True)
-    time.sleep(10)
+    create_transit_gateway(client=us_east_1_client, tgw_name=TGW, tgw_route_table=TGW_1_ROUTE_TABLE, filename=section,
+                           persist=True)
+    time.sleep(40)
     create_transit_gateway_attachments(client=us_east_1_client, tgw_attachment_name=TGW_ATTACH_VPC1,
                                        tgw=TGW, vpc=VPC1, subnet=SUBNET2_VPC1, filename=section, persist=True)
     create_transit_gateway_attachments(client=us_east_1_client, tgw_attachment_name=TGW_ATTACH_VPC2,
                                        tgw=TGW, vpc=VPC2, subnet=SUBNET1_VPC2, filename=section, persist=True)
 
-    time.sleep(10)
+    time.sleep(40)
 
-    create_route_with_tgw(client=us_east_1_client, tgw=TGW, vpc_network=IP_CIDR2, route_table=VPC1_PRI_ROUTE_TABLE, filename=section)
-    create_route_with_tgw(client=us_east_1_client, tgw=TGW, vpc_network=IP_CIDR1, route_table=VPC2_PRI_ROUTE_TABLE, filename=section)
+    create_route_with_tgw(client=us_east_1_client, tgw=TGW, vpc_network=IP_CIDR2, route_table=VPC1_PRI_ROUTE_TABLE,
+                          filename=section)
+    create_route_with_tgw(client=us_east_1_client, tgw=TGW, vpc_network=IP_CIDR1, route_table=VPC2_PRI_ROUTE_TABLE,
+                          filename=section)
 
 
 def create_vms(section, constants):
@@ -112,12 +123,14 @@ def create_vms(section, constants):
 
     US_EAST_1_IMAGE = constants['US_EAST_1_IMAGE']
 
-
-    create_security_group(client=us_east_1_client, group_name=SG_PUB_1_VPC1, ec2_name=EC2_PUB_1_VPC1, vpc=VPC1, filename=section,
+    create_security_group(client=us_east_1_client, group_name=SG_PUB_1_VPC1, ec2_name=EC2_PUB_1_VPC1, vpc=VPC1,
+                          filename=section,
                           persist=True)
-    create_security_group(client=us_east_1_client, group_name=SG_PRI_2_VPC1, ec2_name=EC2_PRI_2_VPC1, vpc=VPC1, filename=section,
+    create_security_group(client=us_east_1_client, group_name=SG_PRI_2_VPC1, ec2_name=EC2_PRI_2_VPC1, vpc=VPC1,
+                          filename=section,
                           persist=True)
-    create_security_group(client=us_east_1_client, group_name=SG_PRI_1_VPC2, ec2_name=EC2_PRI_1_VPC2, vpc=VPC2, filename=section,
+    create_security_group(client=us_east_1_client, group_name=SG_PRI_1_VPC2, ec2_name=EC2_PRI_1_VPC2, vpc=VPC2,
+                          filename=section,
                           persist=True)
 
     create_ec2(client=us_east_1_client, ec2_name=EC2_PUB_1_VPC1, subnet=SUBNET1_VPC1,
@@ -166,3 +179,7 @@ def run_intra_region():
     logger.info('Starting EC2 and rules creation')
     create_vms(section, constants)
     logger.info('Created EC2 and routes. Go ahead and test it out')
+
+
+if __name__ == '__main__':
+    run_intra_region()

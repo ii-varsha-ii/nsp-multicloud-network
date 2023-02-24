@@ -9,6 +9,8 @@ intra_region:
   SUBNET1_VPC1 : 'public_subnet_vpc1'
   SUBNET2_VPC1 : 'private_subnet_vpc1'
   SUBNET1_VPC2 : 'private_subnet_vpc2'
+  REGION1: 'us-east-1'
+  REGION1_AZ: 'us-east-1d'
   IGW : 'igw'
   VPC1_PUB_ROUTE_TABLE : 'vpc1_pub_route_table'
   VPC2_PRI_ROUTE_TABLE : 'vpc2_pri_route_table'
