@@ -1,8 +1,8 @@
 intra_region:
   IP_CIDR1 : '172.32.1.0/24'
   IP_CIDR2 : '172.32.0.0/24'
-  VPC1 : 'custom_vpc_1'
-  VPC2 : 'custom_vpc_2'
+  VPC1 : 'dev_vpc_1'
+  VPC2 : 'dev_vpc_2'
   SUBNET_CIDR11 : '172.32.1.0/25'
   SUBNET_CIDR12 : '172.32.1.128/25'
   SUBNET_CIDR21 : '172.32.0.0/25'
