@@ -1,3 +1,6 @@
 venv/
 config/access_keys.yml
 config/defaultvpc_instance1.pem
+multi-cloud-terraform/.terraform/*
+multi-cloud-terraform/.terraform.lock.hcl
+multi-cloud-terraform/.terraform.tfstate.backup
