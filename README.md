@@ -1,4 +1,5 @@
 # nsp-multicloud-network
+The codebase comprises of terraform scripts to setup the below designs in AWS
 
 ## Scenario 1:
 ### Intra Region
