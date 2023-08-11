@@ -2,18 +2,17 @@
 
 ## Scenario 1:
 ### Intra Region
-![nsp-scenario-1.drawio.png](imgs/nsp-scenario-1.drawio.png)
-
+![intra-region.png](imgs/intra-region.png)
 
 ## Scenario 2 - Inter Region:
 
-![nsp-scenario-2.drawio.png](imgs/nsp-scenario-2.drawio.png)
+![inter-region.png](imgs/inter-region.png)
 
-## Scenario 3 - Inter Cloud Providers:
+## Across accounts
 
-![nsp-scenario-2.drawio.png](imgs/nsp-scenario-2.drawio.png)
+![multiple-accounts.png](imgs/multiple-accounts.png)
 
 How to run?
 
-1. The folder `run` has the files for each scenario. ( intra-region, inter-region, inter-cloud-providers )
+1. The folder `run` has the files for each scenario. ( intra-region, inter-region )
 2. The folder `services` has the functions which are used for creating the required services
